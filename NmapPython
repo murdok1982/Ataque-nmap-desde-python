@@ -1,0 +1,11 @@
+import nmap
+
+scanner = nmap.PortScanner()
+
+ip_range = '41.140.0.0/41.140.255.255' '105.154.0.0/105.155.255.255' '196.12.128.0/196.12.191.255'
+
+scanner.scan(hosts=ip_range, arguments='-n -sP -P')
+
+for host in scanner.all_hosts():
+    print(f'Host: {host} ({scanner[host].hostname()})')
+    print(f'State: {scanner[host].state()}')
